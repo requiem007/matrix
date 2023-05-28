@@ -18,7 +18,7 @@ let sumResult;
 let lastFateNumber;
 let sumFromLastFateNumber;
 
-export const fate = await fetch("/matrix.json")
+export const fate = await fetch("matrix.json")
     .then((response) => {
         return response.json();
     })
@@ -648,6 +648,19 @@ function showСoincidences() {
         });
     });
 }
+/// закрытие по клику все попап
+document.addEventListener("click", function (e) {
+    let target = e.target;
+    console.log();
+    if (target.classList.contains("popup__body")) {
+        popupClose();
+    }
+});
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+        popupClose();
+    }
+});
 
 btnCloseModal.addEventListener("click", popupClose);
 function popupClose() {
