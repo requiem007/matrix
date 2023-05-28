@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Matrix</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="input">
+                <label class="date__label" for="date-birthday">Введите Вашу дату рождения</label>
+                <input type="date" id="date-birthday" class="date__input" value="1992-06-17" />
+                <button class="input__button">Рассчитать</button>
+            </div>
+            <div class="matrix__content">
+                <div class="matrix__body">
+                    <div class="matrix">
+                        <div class="matrix__item" id="1"><span class="span__item">Характер</span></div>
+                        <div class="matrix__item" id="4"><span class="span__item">Здоровье</span></div>
+                        <div class="matrix__item" id="7"><span class="span__item">Удача</span></div>
+                        <div class="matrix__item" id="2"><span class="span__item">Энергия</span></div>
+                        <div class="matrix__item" id="5"><span class="span__item">Логика</span></div>
+                        <div class="matrix__item" id="8"><span class="span__item">Долг</span></div>
+                        <div class="matrix__item" id="3"><span class="span__item">Интерес</span></div>
+                        <div class="matrix__item" id="6"><span class="span__item">Труд</span></div>
+                        <div class="matrix__item" id="9"><span class="span__item">Память</span></div>
+                    </div>
+                    <div class="matrix__description">
+                        <h1 class="description__title">Ваша матрица</h1>
+                        <ul class="description__item"></ul>
+                    </div>
+                </div>
+                <div class="matrix__full-desc"></div>
+            </div>
+        </div>
+        <div id="popup" class="popup">
+            <div class="popup__body">
+                <div class="popup__content">
+                    <button class="close__popup close">&times;</button>
+
+                    <div class="popup__content-item">
+                        <h3 class="content-item__title">Совпадения кодов и их расшифровка</h3>
+                        <div class="content-item__description"></div>
+                        <div class="alpha-female__code code">
+                            <h4 class="alpha-female__title">Код альфа-самки:</h4>
+                        </div>
+                        <div class="beta-female__code code">
+                            <h4 class="beta-female__title">Код бета-самки:</h4>
+                        </div>
+                        <div class="alpha-male__code code">
+                            <h4 class="alpha-male__title">Код альфа-самца:</h4>
+                        </div>
+                        <div class="millionaire__code code">
+                            <h4 class="millionaire__title">Код миллионера:</h4>
+                        </div>
+                        <div class="mother-son__code code">
+                            <h4 class="mother-son__title">Код "мамин сынок":</h4>
+                        </div>
+                        <div class="meanie__code code">
+                            <h4 class="meanie__title sub-title">Код "жадина":</h4>
+                        </div>
+                        <div class="gambler__code code">
+                            <h4 class="gambler__title sub-title">Код "игрока":</h4>
+                        </div>
+                        <div class="nerd__code code">
+                            <h4 class="nerd__title sub-title">Код "зануды":</h4>
+                        </div>
+                        <div class="gigolo__code code">
+                            <h4 class="gigolo__title sub-title">Код "альфонса":</h4>
+                        </div>
+                        <div class="tyrant__code code">
+                            <h4 class="tyrant__title sub-title">Код "домашний тиран":</h4>
+                        </div>
+                        <div class="maniac__code code">
+                            <h4 class="maniac__title sub-title">Код "маньяк":</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="module" src="app.js"></script>
+</html>
