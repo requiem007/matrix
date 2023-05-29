@@ -73,11 +73,11 @@ export const conditions = function () {
 
     if (character.length > 0 && character.length < 6 && health.length > 0 && health.length < 4 && duty.length > 1 && duty.length < 4) {
         let codeText = `Характер ${character} + Здоровье ${health} + Долг ${duty}`;
-        paster(codeText, combinations[1]["/11/111/1111/11111+4/44/444+88/888"]);
+        paster(codeText, combinations[1]["1/11/111/1111/11111+4/44/444+88/888"]);
     }
 
     if (character.length > 1 && character.length < 4 && energy.length > 2 && interest.length > 1 && interest.length < 4) {
-        let codeText = `${character} + ${energy} + ${interest}`;
+        let codeText = `Характер ${character} + Энергия ${energy} + $ Интерес{interest}`;
         paster(codeText, combinations[2]["11/111+22/222++33/333"]);
     }
 

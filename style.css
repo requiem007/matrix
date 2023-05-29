@@ -141,16 +141,7 @@ a {
     font-weight: 600;
     font-size: 18px;
 }
-@media (max-width: 810px) {
-    .matrix__body {
-        flex-direction: column;
-        gap: 10px;
-        justify-content: center;
-    }
-    .matrix__description {
-        margin: 0 auto;
-    }
-}
+
 /* описание матрицы */
 
 .matrix__full-desc {
@@ -361,4 +352,36 @@ a {
 }
 .show {
     display: block;
+}
+
+@media (max-width: 810px) {
+    .matrix__body {
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+    }
+    .matrix__description {
+        margin: 0 auto;
+    }
+}
+@media (max-width: 426px) {
+    .matrix__body {
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        padding: 10px 0px;
+    }
+    .matrix__description {
+        margin: 0 auto;
+    }
+    .matrix__full-desc {
+        padding: 0px;
+    }
+    .popup__body {
+        padding: 30px 5px;
+    }
+    .popup__content {
+        width: 95%;
+        padding: 70px 15px;
+    }
 }

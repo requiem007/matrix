@@ -40,11 +40,12 @@ function formatDate(d) {
 
     // array from full birthday date
     const dateArray = String(+day.concat(month, year)).split("").map(Number);
-    // console.log(dateArray);
+
+    console.log(dateArray);
 
     const initialValue = 0;
     sumResult = dateArray.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue);
-    // console.log(sumResult);
+    console.log(sumResult);
 
     sumFromSumResult.push(
         String(sumResult)
@@ -53,12 +54,15 @@ function formatDate(d) {
             .reduce((accumulator, currentValue) => accumulator + currentValue, initialValue)
     );
 
+    console.log(sumFromSumResult);
+
     if (sumFromSumResult[0] === 10) {
         sumFromSumResult[0] = 1;
     }
     if (sumFromSumResult[0] > 11) {
-        // console.log("Число больше 11");
-        // console.log(sumFromSumResult);
+        console.log("Число больше 11");
+        console.log(sumFromSumResult);
+        // sumFromSumResult = [...sumFromSumResult.toString()].map(Number);
         sumFromSumResult[0] = String(sumFromSumResult[0])
             .split("")
             .map(Number)
@@ -67,9 +71,10 @@ function formatDate(d) {
     console.log(`Число судьбы ${sumFromSumResult}`);
 
     totalFirstNumber = String(sumResult).split("").map(Number);
-    totalFirstNumber.push(...sumFromSumResult);
+    totalFirstNumber.push(...[...sumFromSumResult.toString()].map(Number));
     // totalFirstNumber.push(sumFromSumResult);
-    // console.log(totalFirstNumber);
+    console.log(totalFirstNumber);
+
     // console.log(totalFirstNumber.join(""));
 
     const fateNumber = dateArray[0] * 2;
@@ -81,21 +86,30 @@ function formatDate(d) {
         .split("")
         .map(Number)
         .reduce((accumulator, currentValue) => accumulator + currentValue, initialValue);
+
     // console.log(sumFromLastFateNumber);
 
     const totalSecondNumber = String(lastFateNumber).split("").map(Number);
-    totalSecondNumber.push(sumFromLastFateNumber);
-    // console.log(totalSecondNumber);
-    genderCode = totalSecondNumber.join("");
+    totalSecondNumber.push(...[...sumFromLastFateNumber.toString()].map(Number));
+
+    // genderCode = totalSecondNumber.join("");
+
+    console.log(totalSecondNumber);
     // console.log(totalSecondNumber.join(""));
 
+    // let array;
+    // if (sumFromSumResult > 10) {
+    //     array = [...sumFromSumResult.toString()].map(Number);
+    //     console.log(array);
+    // }
+
     const fullArray = dateArray.concat(totalFirstNumber, totalSecondNumber);
-    // console.log(fullArray);
+    console.log(fullArray);
 
     numberBox.forEach(function (element, index) {
         //массив с повторяющимися элементами
         let number = fullArray.filter((number) => number === index + 1);
-        console.log(number);
+        // console.log(number);
         number.length > 0
             ? document.getElementById(`${index + 1}`).insertAdjacentHTML("afterbegin", `<p class='output'>${number.join("")}</p>`)
             : document.getElementById(`${index + 1}`).insertAdjacentHTML("afterbegin", `<p class='output'>-</p>`);
@@ -666,11 +680,24 @@ btnCloseModal.addEventListener("click", popupClose);
 function popupClose() {
     popup.classList.remove("open");
 }
+const desc = document.querySelector(".code");
+function popupCleaner() {
+    container.innerHTML = "";
 
+    // desc.innerHTML = "";
+    // desc.replaceChildren();
+    // while (desc.firstChild) {
+    //     desc.removeChild(desc.firstChild);
+    // }
+}
 btn.addEventListener("click", function () {
     let d = new Date(birthdayDate.value);
 
     cleaner();
+    popupCleaner();
+    console.log(container);
+    console.log(desc.childElementCount);
+    // console.log(document.querySelectorAll(".code").innerHTML);
 
     sumFromSumResult.length = 0;
     // sumFromSumResult = 0;
