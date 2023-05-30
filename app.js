@@ -144,7 +144,7 @@ function formatDate(d) {
     temperament = calculateMatrix(3).concat(calculateMatrix(5), calculateMatrix(7)).length;
     // console.log(temperament);
     // console.log(temperament.length);
-    matrixDescription.insertAdjacentHTML("beforeend", `<p id="temperament" class="description__life">Темперамент - ${temperament}</p>`);
+    matrixDescription.insertAdjacentHTML("beforeend", `<p id="temp" class="description__life">Темперамент - ${temperament}</p>`);
 }
 function calculateMatrix(elementId) {
     const itemTextContent = document.getElementById(`${elementId}`).querySelector(".output").textContent.split(",");
@@ -221,17 +221,12 @@ function showTargetDescription(id) {
     const desc = document.createElement("p");
     desc.classList.add("full-desc__text");
     desc.textContent = `${fate[2].targetNumber[targetNumber]}`;
-    // console.log(desc.textContent);
 
     bodyDiv.append(subTitle, desc);
 }
 // семья
 function showFamilyDescription(id) {
-    // console.log(familyNumber);
-    // let number = +id.textContent.slice(-1);
-    // if (number > 6) number = 6;
-    // if (number <= 2) number = 1;
-
+    if (familyNumber < 3) familyNumber = 1;
     //подзаголовок
     const subTitle = document.createElement("button");
     subTitle.classList.add("full-desc__sub-title");
@@ -241,7 +236,6 @@ function showFamilyDescription(id) {
     const desc = document.createElement("p");
     desc.classList.add("full-desc__text");
     desc.textContent = `${fate[3].familyNumber[familyNumber]}`;
-    // console.log(desc.textContent);
 
     bodyDiv.append(subTitle, desc);
 }
@@ -264,6 +258,24 @@ function showHabitsDescription(id) {
 
     bodyDiv.append(subTitle, desc);
 }
+// Темперамент
+function showTemperament(id) {
+    if (temperament < 2) temperament = 0;
+    if (temperament > 3 && temperament < 6) temperament = 4;
+    if (temperament > 5) temperament = 6;
+
+    //подзаголовок
+    const subTitle = document.createElement("button");
+    subTitle.classList.add("full-desc__sub-title");
+    subTitle.textContent = `${id.textContent}`;
+
+    //  текст описания
+    const desc = document.createElement("p");
+    desc.classList.add("full-desc__text");
+    desc.textContent = `${fate[15].temperament[temperament]}`;
+
+    bodyDiv.append(subTitle, desc);
+}
 // число судьбы
 function showFateDescription(fateNumber) {
     //общий контейнер
@@ -274,11 +286,6 @@ function showFateDescription(fateNumber) {
     const title = document.createElement("h2");
     title.classList.add("full-desc__title");
     title.textContent = "Число судьбы";
-
-    // контейнер для подробного описания
-    // const bodyDiv = document.createElement("div");
-    // bodyDiv.classList.add("full-desc__body");
-
     //подзаголовок
     const subTitle = document.createElement("button");
     subTitle.classList.add("full-desc__sub-title");
@@ -325,8 +332,6 @@ function showFateDescription(fateNumber) {
     mainDiv.append(title, bodyDiv);
 
     fullMatrixDescription.append(mainDiv);
-
-    // console.log(fate[0].fateNumber[fateNumber].number);
 }
 /// чистка контента
 function cleaner() {
@@ -735,6 +740,8 @@ btn.addEventListener("click", function () {
         showFamilyDescription(family);
         // показываем описание привычек
         showHabitsDescription(habits);
+        // показываем описание темперамента
+        showTemperament(temp);
 
         showElements();
         accordeon();
