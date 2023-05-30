@@ -41,11 +41,11 @@ function formatDate(d) {
     // array from full birthday date
     const dateArray = String(+day.concat(month, year)).split("").map(Number);
 
-    console.log(dateArray);
+    // console.log(dateArray);
 
     const initialValue = 0;
     sumResult = dateArray.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue);
-    console.log(sumResult);
+    // console.log(sumResult);
 
     sumFromSumResult.push(
         String(sumResult)
@@ -54,31 +54,36 @@ function formatDate(d) {
             .reduce((accumulator, currentValue) => accumulator + currentValue, initialValue)
     );
 
-    console.log(sumFromSumResult);
+    // console.log(sumFromSumResult);
+
+    totalFirstNumber = String(sumResult).split("").map(Number);
+    totalFirstNumber.push(...[...sumFromSumResult.toString()].map(Number));
 
     if (sumFromSumResult[0] === 10) {
         sumFromSumResult[0] = 1;
     }
     if (sumFromSumResult[0] > 11) {
-        console.log("Число больше 11");
-        console.log(sumFromSumResult);
+        // console.log("Число больше 11");
+        // console.log(sumFromSumResult);
+
         // sumFromSumResult = [...sumFromSumResult.toString()].map(Number);
+
+        // totalSecondNumber.push(...[...sumFromSumResult.toString()].map(Number));
         sumFromSumResult[0] = String(sumFromSumResult[0])
             .split("")
             .map(Number)
             .reduce((accumulator, currentValue) => accumulator + currentValue, initialValue);
     }
-    console.log(`Число судьбы ${sumFromSumResult}`);
+    // console.log(`Число судьбы ${sumFromSumResult}`);
 
-    totalFirstNumber = String(sumResult).split("").map(Number);
-    totalFirstNumber.push(...[...sumFromSumResult.toString()].map(Number));
     // totalFirstNumber.push(sumFromSumResult);
-    console.log(totalFirstNumber);
+    // console.log(totalFirstNumber);
 
     // console.log(totalFirstNumber.join(""));
 
     const fateNumber = dateArray[0] * 2;
     lastFateNumber = sumResult - fateNumber;
+
     // console.log(fateNumber);
     // console.log(lastFateNumber);
 
@@ -94,7 +99,7 @@ function formatDate(d) {
 
     // genderCode = totalSecondNumber.join("");
 
-    console.log(totalSecondNumber);
+    // console.log(totalSecondNumber);
     // console.log(totalSecondNumber.join(""));
 
     // let array;
@@ -104,7 +109,7 @@ function formatDate(d) {
     // }
 
     const fullArray = dateArray.concat(totalFirstNumber, totalSecondNumber);
-    console.log(fullArray);
+    // console.log(fullArray);
 
     numberBox.forEach(function (element, index) {
         //массив с повторяющимися элементами
@@ -644,15 +649,19 @@ const btnCloseModal = document.querySelector(".close__popup");
 export const popupContent = document.querySelector(".popup__content");
 export const lockPadding = document.querySelectorAll(".lock-padding");
 export const popupBody = document.querySelector(".popup__body");
+const body = document.querySelector("body");
 
 export const container = document.querySelector(".content-item__description");
 
 import { conditions } from "./js/conditions.js";
 
+/// блокировка скролов и полосы прокрутки
+
 function showСoincidences() {
     document.querySelector(".coincidences__btn").addEventListener("click", function () {
         popup.classList.add("open");
 
+        body.classList.add("lock");
         // container.innerHTML = "";
         // document.querySelectorAll(".code").forEach((item) => item.removeChild(firstChild));
 
@@ -679,6 +688,8 @@ document.addEventListener("keydown", function (event) {
 btnCloseModal.addEventListener("click", popupClose);
 function popupClose() {
     popup.classList.remove("open");
+
+    body.classList.remove("lock");
 }
 const desc = document.querySelector(".code");
 function popupCleaner() {
@@ -695,8 +706,8 @@ btn.addEventListener("click", function () {
 
     cleaner();
     popupCleaner();
-    console.log(container);
-    console.log(desc.childElementCount);
+    // console.log(container);
+    // console.log(desc.childElementCount);
     // console.log(document.querySelectorAll(".code").innerHTML);
 
     sumFromSumResult.length = 0;

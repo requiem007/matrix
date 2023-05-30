@@ -9,7 +9,9 @@ ol,
 a {
     list-style: none;
 }
-
+.lock {
+    overflow: hidden;
+}
 .container {
     margin: 0 auto;
     align-items: center;
