@@ -209,8 +209,9 @@ function showLifeDescription(id) {
 }
 // цель
 function showTargetDescription(id) {
-    // let number = +id.textContent.slice(-1);
-    if (targetNumber > 6) targetNumber = 6;
+    let number = +id.textContent.slice(-1);
+    if (targetNumber > 6) number = 6;
+    console.log(number);
 
     //подзаголовок
     const subTitle = document.createElement("button");
@@ -220,13 +221,14 @@ function showTargetDescription(id) {
     //  текст описания
     const desc = document.createElement("p");
     desc.classList.add("full-desc__text");
-    desc.textContent = `${fate[2].targetNumber[targetNumber]}`;
+    desc.textContent = `${fate[2].targetNumber[number]}`;
 
     bodyDiv.append(subTitle, desc);
 }
 // семья
 function showFamilyDescription(id) {
-    if (familyNumber < 3) familyNumber = 1;
+    let number = +id.textContent.slice(-1);
+    if (familyNumber < 3) number = 1;
     //подзаголовок
     const subTitle = document.createElement("button");
     subTitle.classList.add("full-desc__sub-title");
@@ -235,7 +237,7 @@ function showFamilyDescription(id) {
     //  текст описания
     const desc = document.createElement("p");
     desc.classList.add("full-desc__text");
-    desc.textContent = `${fate[3].familyNumber[familyNumber]}`;
+    desc.textContent = `${fate[3].familyNumber[number]}`;
 
     bodyDiv.append(subTitle, desc);
 }
@@ -260,9 +262,10 @@ function showHabitsDescription(id) {
 }
 // Темперамент
 function showTemperament(id) {
-    if (temperament < 2) temperament = 0;
-    if (temperament > 3 && temperament < 6) temperament = 4;
-    if (temperament > 5) temperament = 6;
+    let number = +id.textContent.slice(-1);
+    if (temperament < 2) number = 0;
+    if (temperament > 3 && temperament < 6) number = 4;
+    if (temperament > 5) number = 6;
 
     //подзаголовок
     const subTitle = document.createElement("button");
@@ -272,7 +275,7 @@ function showTemperament(id) {
     //  текст описания
     const desc = document.createElement("p");
     desc.classList.add("full-desc__text");
-    desc.textContent = `${fate[15].temperament[temperament]}`;
+    desc.textContent = `${fate[15].temperament[number]}`;
 
     bodyDiv.append(subTitle, desc);
 }
@@ -662,13 +665,13 @@ import { conditions } from "./js/conditions.js";
 
 /// блокировка скролов и полосы прокрутки
 
+/// показать сочетания
 function showСoincidences() {
     document.querySelector(".coincidences__btn").addEventListener("click", function () {
         popup.classList.add("open");
 
         body.classList.add("lock");
         // container.innerHTML = "";
-        // document.querySelectorAll(".code").forEach((item) => item.removeChild(firstChild));
 
         document.querySelectorAll(".output").forEach((el) => {
             el.textContent === "-" ? (el.textContent = "") : null;
@@ -699,18 +702,13 @@ function popupClose() {
 const desc = document.querySelector(".code");
 function popupCleaner() {
     container.innerHTML = "";
-
-    // desc.innerHTML = "";
-    // desc.replaceChildren();
-    // while (desc.firstChild) {
-    //     desc.removeChild(desc.firstChild);
-    // }
 }
 btn.addEventListener("click", function () {
     let d = new Date(birthdayDate.value);
 
     cleaner();
     popupCleaner();
+    document.querySelectorAll(".code").forEach((item) => (item.innerHTML = ""));
     // console.log(container);
     // console.log(desc.childElementCount);
     // console.log(document.querySelectorAll(".code").innerHTML);
