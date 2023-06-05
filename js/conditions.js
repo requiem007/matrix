@@ -7,12 +7,6 @@ import { container } from "../app.js";
 import { familyNumber, habitsNumber, temperament, lifeNumber, targetNumber, sumFromSumResult, genderCode } from "../app.js";
 
 function paster(codeText, way) {
-    // const code = document.createElement("p");
-    // code.classList.add("content-item__code");
-    // code.textContent = `${codeText}`;
-
-    // const code = createParagraph(codeText);
-
     const description = document.createElement("p");
     description.classList.add("content-item__code-text");
     description.textContent = `${way};`;
@@ -36,6 +30,13 @@ function createDescription(way) {
     description.classList.add("content-item__code-text");
     description.textContent = `${way}`;
     return description;
+}
+
+function createSpan() {
+    const span = document.createElement("span");
+    span.classList.add("content-item__span");
+    span.textContent = "-";
+    return span;
 }
 
 export const conditions = function () {
@@ -67,7 +68,7 @@ export const conditions = function () {
 
     if (character.length == 3 && health.length >= 1 && duty.length <= 1) {
         // if (health.length === 0) health = 0;
-        let codeText = `Характер ${character} + Здоровье ${health} + Долг${duty}`;
+        let codeText = `Характер ${character} + Здоровье ${health} + Долг ${duty}`;
         paster(codeText, combinations[1]["111+4/44/444++8/0"]);
     }
 
@@ -809,7 +810,6 @@ export const conditions = function () {
         const mistakes = Object.values(combinations["millionaireCode"]["mistakes"]);
         millionaireCode.append(createParagraph("Характерные ошибки людей с таким кодом:"));
         mistakes.forEach((item) => millionaireCode.append(createDescription(item)));
-        console.log(health.length);
     }
 
     /// код маминого сынка

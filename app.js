@@ -27,12 +27,14 @@ export const fate = await fetch("matrix.json")
         return data;
     });
 
+// тоже сложить в обьект
 export let familyNumber;
 export let habitsNumber;
 export let temperament;
 export let lifeNumber;
 export let targetNumber;
 
+// разобрать на части
 function formatDate(d) {
     const day = d.getDate().toString().padStart(2, "0");
     const month = (d.getMonth() + 1).toString().padStart(2, "0");
@@ -146,6 +148,7 @@ function formatDate(d) {
     // console.log(temperament.length);
     matrixDescription.insertAdjacentHTML("beforeend", `<p id="temp" class="description__life">Темперамент - ${temperament}</p>`);
 }
+// это в хелперс
 function calculateMatrix(elementId) {
     const itemTextContent = document.getElementById(`${elementId}`).querySelector(".output").textContent.split(",");
     if (itemTextContent[0] === "" || itemTextContent[0] === "-") {
@@ -153,9 +156,11 @@ function calculateMatrix(elementId) {
     }
     return itemTextContent.join("").split("");
 }
+
 function showFateNumber(fateNumber) {
     matrixDescription.insertAdjacentHTML("afterbegin", `<p id="fate__number" class="description__life">Число судьбы  ${fateNumber}</p>`);
 }
+
 function showGenderCode(genderCode) {
     matrixDescription.insertAdjacentHTML("afterbegin", `<p id="gender__code" class="description__life">Код рода  ${genderCode}</p>`);
 }
@@ -185,6 +190,7 @@ function accordeon() {
         });
     });
 }
+
 // контейнер для подробного описания
 const bodyDiv = document.createElement("div");
 bodyDiv.classList.add("full-desc__body");
@@ -211,7 +217,7 @@ function showLifeDescription(id) {
 function showTargetDescription(id) {
     let number = +id.textContent.slice(-1);
     if (targetNumber > 6) number = 6;
-    console.log(number);
+    // console.log(number);
 
     //подзаголовок
     const subTitle = document.createElement("button");
@@ -353,6 +359,7 @@ function cleaner() {
     while (bodyDiv.firstChild) {
         bodyDiv.removeChild(bodyDiv.firstChild);
     }
+    container.innerHTML = "";
 }
 /// вставка элементов
 function showElements() {
@@ -666,31 +673,25 @@ import { conditions } from "./js/conditions.js";
 /// блокировка скролов и полосы прокрутки
 
 /// показать сочетания
+
 function showСoincidences() {
     document.querySelector(".coincidences__btn").addEventListener("click", function () {
         popup.classList.add("open");
 
         body.classList.add("lock");
-        // container.innerHTML = "";
 
         document.querySelectorAll(".output").forEach((el) => {
             el.textContent === "-" ? (el.textContent = "") : null;
-            // console.log(el);
         });
     });
 }
 /// закрытие по клику все попап
-document.addEventListener("click", function (e) {
-    let target = e.target;
-    console.log();
-    if (target.classList.contains("popup__body")) {
-        popupClose();
-    }
+document.addEventListener("click", ({ target }) => {
+    if (target.matches(".popup__body")) popupClose();
 });
-document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-        popupClose();
-    }
+
+document.addEventListener("keydown", ({ key }) => {
+    if (key === "Escape") popupClose();
 });
 
 btnCloseModal.addEventListener("click", popupClose);
@@ -699,22 +700,20 @@ function popupClose() {
 
     body.classList.remove("lock");
 }
-const desc = document.querySelector(".code");
+const desc = document.querySelectorAll(".code");
+
 function popupCleaner() {
-    container.innerHTML = "";
+    desc.forEach((item) => item.querySelectorAll("p").forEach((item) => (item.textContent = "")));
+    desc.forEach((item) => item.querySelectorAll("h5").forEach((item) => (item.textContent = "")));
+    desc.forEach((item) => item.querySelectorAll(".content-item__code-text").forEach((item) => item.classList.add("del")));
 }
 btn.addEventListener("click", function () {
     let d = new Date(birthdayDate.value);
 
     cleaner();
     popupCleaner();
-    document.querySelectorAll(".code").forEach((item) => (item.innerHTML = ""));
-    // console.log(container);
-    // console.log(desc.childElementCount);
-    // console.log(document.querySelectorAll(".code").innerHTML);
 
     sumFromSumResult.length = 0;
-    // sumFromSumResult = 0;
 
     if (birthdayDate.value !== "") {
         //включаем видимость блока
@@ -723,6 +722,7 @@ btn.addEventListener("click", function () {
         birthdayDate.value = "";
         // удаляем класс ошибки
         birthdayDate.classList.remove("error");
+
         formatDate(d);
         // показываем число судьбы
         showFateNumber(sumFromSumResult);
