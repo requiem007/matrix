@@ -1,10 +1,11 @@
-import { fate } from "../app.js";
+import { fate } from "./service.js";
 import { popupBody } from "../app.js";
 import { lockPadding } from "../app.js";
 import { popupContent } from "../app.js";
 import { container } from "../app.js";
 
-import { familyNumber, habitsNumber, temperament, lifeNumber, targetNumber, sumFromSumResult, genderCode } from "../app.js";
+import { mainDescriptionNumbers } from "./data.js";
+import { data } from "./data.js";
 
 function paster(codeText, way) {
     const description = document.createElement("p");
@@ -146,8 +147,8 @@ export const conditions = function () {
         let codeText = `Энергия ${energy} + Долг ${duty} + Интерес${interest}`;
         paster(codeText, combinations[4]["2/0+88/888+3/0"]);
     }
-    if (energy.length < 2 && duty.length > 1 && duty.length < 4 && familyNumber == 3) {
-        let codeText = `Энергия ${energy} + Долг ${duty} + Семья ${familyNumber}`;
+    if (energy.length < 2 && duty.length > 1 && duty.length < 4 && mainDescriptionNumbers.familyNumber == 3) {
+        let codeText = `Энергия ${energy} + Долг ${duty} + Семья ${mainDescriptionNumbers.familyNumber}`;
         paster(codeText, combinations[4]["2/0+88/888+familyNumber3"]);
     }
     if (energy.length < 2 && duty.length > 1 && duty.length < 4 && interest.length > 1 && interest.length < 4) {
@@ -190,8 +191,16 @@ export const conditions = function () {
         let codeText = `Энергия ${energy} + Труд ${work}`;
         paster(codeText, combinations[6]["22/222/2222+6/66"]);
     }
-    if (energy.length > 1 && energy.length < 5 && luck.length > 0 && luck.length < 4 && interest.length > 1 ** interest.length < 4 && targetNumber > 3 && targetNumber < 7) {
-        let codeText = `Энергия ${energy} + Удача ${luck} + Интерес ${interest} + Цель ${targetNumber}`;
+    if (
+        energy.length > 1 &&
+        energy.length < 5 &&
+        luck.length > 0 &&
+        luck.length < 4 &&
+        interest.length > 1 ** interest.length < 4 &&
+        mainDescriptionNumbers.targetNumber > 3 &&
+        mainDescriptionNumbers.targetNumber < 7
+    ) {
+        let codeText = `Энергия ${energy} + Удача ${luck} + Интерес ${interest} + Цель ${mainDescriptionNumbers.targetNumber}`;
         paster(codeText, combinations[7]["22/222/2222+7/77/777+33+333+targetNumber4/5/6"]);
     }
     if (energy.length < 2 && logic.length > 0 && logic.length < 4) {
@@ -207,42 +216,42 @@ export const conditions = function () {
         paster(codeText, combinations[8]["22/222/2222+5/55+555+33+333"]);
     }
 
-    if (energy.length < 2 && targetNumber > 0 && targetNumber < 4) {
-        let codeText = `Энергия ${energy} + Цель ${targetNumber}`;
+    if (energy.length < 2 && mainDescriptionNumbers.targetNumber > 0 && mainDescriptionNumbers.targetNumber < 4) {
+        let codeText = `Энергия ${energy} + Цель ${mainDescriptionNumbers.targetNumber}`;
         paster(codeText, combinations[9]["2/0+targetNumber1/2/3"]);
     }
-    if (energy.length < 2 && targetNumber > 3 && targetNumber < 6) {
-        let codeText = `Энергия ${energy} + Цель ${targetNumber}`;
+    if (energy.length < 2 && mainDescriptionNumbers.targetNumber > 3 && mainDescriptionNumbers.targetNumber < 6) {
+        let codeText = `Энергия ${energy} + Цель ${mainDescriptionNumbers.targetNumber}`;
         paster(codeText, combinations[9]["2/0+targetNumber4/5"]);
     }
-    if (energy.length < 2 && targetNumber > 5 && targetNumber < 9) {
-        let codeText = `Энергия ${energy} + Цель ${targetNumber}`;
+    if (energy.length < 2 && mainDescriptionNumbers.targetNumber > 5 && mainDescriptionNumbers.targetNumber < 9) {
+        let codeText = `Энергия ${energy} + Цель ${mainDescriptionNumbers.targetNumber}`;
         paster(codeText, combinations[9]["2/0+targetNumber6/7/8"]);
     }
 
-    if (energy.length < 2 && habitsNumber > 3 && habitsNumber < 4) {
-        let codeText = `Энергия ${energy} + Привычки ${habitsNumber}`;
+    if (energy.length < 2 && mainDescriptionNumbers.habitsNumber > 3 && mainDescriptionNumbers.habitsNumber < 4) {
+        let codeText = `Энергия ${energy} + Привычки ${mainDescriptionNumbers.habitsNumber}`;
         paster(codeText, combinations[10]["2/0+habitsNumber1/2/3"]);
     }
-    if (energy.length < 2 && habitsNumber > 3 && habitsNumber < 6) {
-        let codeText = `Энергия ${energy} + Привычки ${habitsNumber}`;
+    if (energy.length < 2 && mainDescriptionNumbers.habitsNumber > 3 && mainDescriptionNumbers.habitsNumber < 6) {
+        let codeText = `Энергия ${energy} + Привычки ${mainDescriptionNumbers.habitsNumber}`;
         paster(codeText, combinations[10]["2/0+habitsNumber4/5"]);
     }
-    if (energy.length < 2 && habitsNumber > 5) {
-        let codeText = `Энергия ${energy} + Привычки ${habitsNumber}`;
+    if (energy.length < 2 && mainDescriptionNumbers.habitsNumber > 5) {
+        let codeText = `Энергия ${energy} + Привычки ${mainDescriptionNumbers.habitsNumber}`;
         paster(codeText, combinations[10]["2/0+habitsNumber6/7/8/9"]);
     }
 
-    if (energy.length < 2 && temperament < 3) {
-        let codeText = `Энергия ${energy} + Темперамент ${temperament}`;
+    if (energy.length < 2 && mainDescriptionNumbers.temperament < 3) {
+        let codeText = `Энергия ${energy} + Темперамент ${mainDescriptionNumbers.temperament}`;
         paster(codeText, combinations[11]["2/0+temperament1/2/0"]);
     }
-    if (energy.length > 1 && energy.length < 5 && interest.length > 1 && interest.length < 4 && temperament > 2) {
-        let codeText = `Энергия ${energy} + Интерес ${interest} + Темперамент ${temperament}`;
+    if (energy.length > 1 && energy.length < 5 && interest.length > 1 && interest.length < 4 && mainDescriptionNumbers.temperament > 2) {
+        let codeText = `Энергия ${energy} + Интерес ${interest} + Темперамент ${mainDescriptionNumbers.temperament}`;
         paster(codeText, combinations[11]["22/222/2222+33/333+temperament3/4/5/6"]);
     }
-    if (energy.length > 1 && energy.length < 5 && temperament < 3) {
-        let codeText = `Энергия ${energy} + Темперамент ${temperament}`;
+    if (energy.length > 1 && energy.length < 5 && mainDescriptionNumbers.temperament < 3) {
+        let codeText = `Энергия ${energy} + Темперамент ${mainDescriptionNumbers.temperament}`;
         paster(codeText, combinations[11]["222/2222/22222+temperament1/2/0"]);
     }
 
@@ -271,8 +280,8 @@ export const conditions = function () {
         let codeText = `Интерес ${interest} + Удача ${luck}`;
         paster(codeText, combinations[13]["3/0+7/77/777"]);
     }
-    if (interest.length < 2 && temperament < 3) {
-        let codeText = `Интерес ${interest} + Темперамент ${temperament}`;
+    if (interest.length < 2 && mainDescriptionNumbers.temperament < 3) {
+        let codeText = `Интерес ${interest} + Темперамент ${mainDescriptionNumbers.temperament}`;
         paster(codeText, combinations[13]["3/0+temperament1/2/0"]);
     }
 
@@ -297,12 +306,22 @@ export const conditions = function () {
         let codeText = `Здоровье ${health} + Долг ${duty} + Интерес ${interest} + Память ${memory}`;
         paster(codeText, combinations[15]["4/44/444++9/0+88/888+33/333"]);
     }
-    if (health.length > 0 && health.length < 4 && duty.length < 2 && familyNumber < 3) {
-        let codeText = `Здоровье ${health} + Долг ${duty} + Семья ${familyNumber}`;
+    if (health.length > 0 && health.length < 4 && duty.length < 2 && mainDescriptionNumbers.familyNumber < 3) {
+        let codeText = `Здоровье ${health} + Долг ${duty} + Семья ${mainDescriptionNumbers.familyNumber}`;
         paster(codeText, combinations[15]["4/44/444+8/0+familyNumber1/2/0"]);
     }
-    if (health.length > 0 && health.length < 4 && work.length > 0 && work.length < 4 && familyNumber > 0 && familyNumber < 4 && duty.length < 2 && sumFromSumResult == 4 && sumFromSumResult == 6) {
-        let codeText = `Здоровье ${health} + Долг ${duty} + Семья ${familyNumber} + Труд ${work} + Число судьбы ${sumFromSumResult}`;
+    if (
+        health.length > 0 &&
+        health.length < 4 &&
+        work.length > 0 &&
+        work.length < 4 &&
+        mainDescriptionNumbers.familyNumber > 0 &&
+        mainDescriptionNumbers.familyNumber < 4 &&
+        duty.length < 2 &&
+        data.sumFromSumResult == 4 &&
+        data.sumFromSumResult == 6
+    ) {
+        let codeText = `Здоровье ${health} + Долг ${duty} + Семья ${mainDescriptionNumbers.familyNumber} + Труд ${work} + Число судьбы ${data.sumFromSumResult}`;
         paster(codeText, combinations[15]["4/44/444+6/66/666+familyNumber1/2/3+8/0+fateNumber4/6"]);
     }
     if (health.length > 1 && health.length < 4 && logic.length > 0 && logic.length < 5) {
@@ -332,8 +351,8 @@ export const conditions = function () {
         paster(codeText, combinations[19]["5/55/555+7/77/777+8/0"]);
     }
 
-    if (logic.length > 0 && logic.length < 4 && logic.length != 2 && lifeNumber > 1 && lifeNumber < 5) {
-        let codeText = `Логика ${logic} + Быт ${lifeNumber}`;
+    if (logic.length > 0 && logic.length < 4 && logic.length != 2 && mainDescriptionNumbers.lifeNumber > 1 && mainDescriptionNumbers.lifeNumber < 5) {
+        let codeText = `Логика ${logic} + Быт ${mainDescriptionNumbers.lifeNumber}`;
         paster(codeText, combinations[20]["5/555+lifeNumber2/3/4"]);
     }
     ///
@@ -341,8 +360,17 @@ export const conditions = function () {
         let codeText = `Энергия ${energy} + Долг ${duty} + Труд ${work}`;
         paster(codeText, combinations[21]["6/66/666+22/222/2222+88/888"]);
     }
-    if (work.length > 0 && work.length < 4 && energy.length > 1 && energy.length < 5 && duty.length > 1 && duty.length < 4 && familyNumber > 3 && familyNumber < 8) {
-        let codeText = `Энергия ${energy} + Долг ${duty} + Труд ${work}  + Семья ${familyNumber}`;
+    if (
+        work.length > 0 &&
+        work.length < 4 &&
+        energy.length > 1 &&
+        energy.length < 5 &&
+        duty.length > 1 &&
+        duty.length < 4 &&
+        mainDescriptionNumbers.familyNumber > 3 &&
+        mainDescriptionNumbers.familyNumber < 8
+    ) {
+        let codeText = `Энергия ${energy} + Долг ${duty} + Труд ${work}  + Семья ${mainDescriptionNumbers.familyNumber}`;
         paster(codeText, combinations[21]["6/66/666+22/222/2222+88/888+familyNumber4/5/6/7"]);
     }
     ///
@@ -350,8 +378,8 @@ export const conditions = function () {
         let codeText = `Логика ${logic} + Труд ${work} + Интерес ${interest}`;
         paster(codeText, combinations[22]["6/66/666+33/333+logic0"]);
     }
-    if (work.length > 0 && work.length < 4 && interest.length > 0 && interest.length < 4 && temperament > 2 && temperament < 7) {
-        let codeText = `Труд ${work} + Интерес ${interest}  + Темперамент ${temperament}`;
+    if (work.length > 0 && work.length < 4 && interest.length > 0 && interest.length < 4 && mainDescriptionNumbers.temperament > 2 && mainDescriptionNumbers.temperament < 7) {
+        let codeText = `Труд ${work} + Интерес ${interest}  + Темперамент ${mainDescriptionNumbers.temperament}`;
         paster(codeText, combinations[22]["6/66/666+3/33+333+temperament3/4/5/6"]);
     }
     ///
@@ -365,47 +393,64 @@ export const conditions = function () {
         paster(codeText, combinations[24]["6/66/666+22/222/2222"]);
     }
     ///
-    if (work.length > 0 && work.length < 4 && lifeNumber < 4) {
-        let codeText = `Труд ${work} + Быт ${lifeNumber}`;
+    if (work.length > 0 && work.length < 4 && mainDescriptionNumbers.lifeNumber < 4) {
+        let codeText = `Труд ${work} + Быт ${mainDescriptionNumbers.lifeNumber}`;
         paster(codeText, combinations[25]["6/66/666+lifeNumber1/2/3/0"]);
     }
-    if (work.length > 2 && work.length < 5 && lifeNumber > 3 && lifeNumber < 7) {
-        let codeText = `Труд ${work} + Быт ${lifeNumber}`;
+    if (work.length > 2 && work.length < 5 && mainDescriptionNumbers.lifeNumber > 3 && mainDescriptionNumbers.lifeNumber < 7) {
+        let codeText = `Труд ${work} + Быт ${mainDescriptionNumbers.lifeNumber}`;
         paster(codeText, combinations[25]["666/6666+lifeNumber4/5/6"]);
     }
     ///
-    if (work.length > 0 && work.length < 4 && health.length > 0 && health.length < 4 && familyNumber > 0 && familyNumber < 4) {
-        let codeText = `Труд ${work} + Здоровье ${health} + Семья ${familyNumber}`;
+    if (work.length > 0 && work.length < 4 && health.length > 0 && health.length < 4 && mainDescriptionNumbers.familyNumber > 0 && mainDescriptionNumbers.familyNumber < 4) {
+        let codeText = `Труд ${work} + Здоровье ${health} + Семья ${mainDescriptionNumbers.familyNumber}`;
         paster(codeText, combinations[26]["6/66/666+4/44/444+familyNumber1/2/3"]);
     }
-    if (work.length > 0 && work.length < 4 && health.length > 0 && health.length < 4 && familyNumber > 3 && familyNumber < 6) {
-        let codeText = `Труд ${work} + Здоровье ${health} + Семья ${familyNumber}`;
+    if (work.length > 0 && work.length < 4 && health.length > 0 && health.length < 4 && mainDescriptionNumbers.familyNumber > 3 && mainDescriptionNumbers.familyNumber < 6) {
+        let codeText = `Труд ${work} + Здоровье ${health} + Семья ${mainDescriptionNumbers.familyNumber}`;
         paster(codeText, combinations[26]["6/66/666+4/44/444+familyNumber4/5"]);
     }
-    if (character.length > 0 && character.length < 5 && character.length !== 3 && work.length > 0 && work.length < 4 && familyNumber > 0 && familyNumber < 4) {
-        let codeText = `Труд ${work} + Характер ${character} + Семья ${familyNumber}`;
+    if (
+        character.length > 0 &&
+        character.length < 5 &&
+        character.length !== 3 &&
+        work.length > 0 &&
+        work.length < 4 &&
+        mainDescriptionNumbers.familyNumber > 0 &&
+        mainDescriptionNumbers.familyNumber < 4
+    ) {
+        let codeText = `Труд ${work} + Характер ${character} + Семья ${mainDescriptionNumbers.familyNumber}`;
         paster(codeText, combinations[26]["1/11/1111+6/66/666+familyNumber1/2/3"]);
     }
-    if (character.length > 2 && character.length < 5 && work.length > 0 && work.length < 4 && familyNumber > 4 && familyNumber < 7) {
-        let codeText = `Труд ${work} + Характер ${character} + Семья ${familyNumber}`;
+    if (character.length > 2 && character.length < 5 && work.length > 0 && work.length < 4 && mainDescriptionNumbers.familyNumber > 4 && mainDescriptionNumbers.familyNumber < 7) {
+        let codeText = `Труд ${work} + Характер ${character} + Семья ${mainDescriptionNumbers.familyNumber}`;
         paster(codeText, combinations[26]["111/1111+6/66/666+familyNumber5/6"]);
     }
     ///
-    if (luck.length > 0 && luck.length < 4 && familyNumber < 3) {
-        let codeText = `Удача ${luck} + Семья ${familyNumber}`;
+    if (luck.length > 0 && luck.length < 4 && mainDescriptionNumbers.familyNumber < 3) {
+        let codeText = `Удача ${luck} + Семья ${mainDescriptionNumbers.familyNumber}`;
         paster(codeText, combinations[27]["7/77/777+familyNumber1/2/0"]);
     }
     if (luck.length > 0 && luck.length < 4 && interest.length < 2) {
         let codeText = `Удача ${luck} + Интерес ${interest}`;
         paster(codeText, combinations[27]["7/77/777+3/0"]);
     }
-    if (luck.length > 0 && luck.length < 4 && interest.length > 1 && interest.length < 4 && lifeNumber < 2) {
-        let codeText = `Удача ${luck} + Интерес ${interest} + Быт ${lifeNumber}`;
+    if (luck.length > 0 && luck.length < 4 && interest.length > 1 && interest.length < 4 && mainDescriptionNumbers.lifeNumber < 2) {
+        let codeText = `Удача ${luck} + Интерес ${interest} + Быт ${mainDescriptionNumbers.lifeNumber}`;
         paster(codeText, combinations[27]["7/77/777+lifeNumber1/0+33/333"]);
     }
     ///
-    if (luck.length > 0 && luck.length < 4 && energy.length > 1 && energy.length < 5 && interest.length > 1 && interest.length < 4 && lifeNumber > 2 && lifeNumber < 6) {
-        let codeText = `Удача ${luck} + Энергия ${energy} + Интерес ${interest} + Быт ${lifeNumber}`;
+    if (
+        luck.length > 0 &&
+        luck.length < 4 &&
+        energy.length > 1 &&
+        energy.length < 5 &&
+        interest.length > 1 &&
+        interest.length < 4 &&
+        mainDescriptionNumbers.lifeNumber > 2 &&
+        mainDescriptionNumbers.lifeNumber < 6
+    ) {
+        let codeText = `Удача ${luck} + Энергия ${energy} + Интерес ${interest} + Быт ${mainDescriptionNumbers.lifeNumber}`;
         paster(codeText, combinations[28]["7/77/777+22/222/2222+33/333+lifeNumber3/4/5"]);
     }
     if (luck.length > 0 && luck.length < 4 && energy.length < 2 && interest.length < 2) {
@@ -430,16 +475,16 @@ export const conditions = function () {
         paster(codeText, combinations[29]["7/77/777+3/0+5/55/555"]);
     }
     ///
-    if (luck.length > 0 && luck.length < 4 && lifeNumber > 2 && lifeNumber < 6) {
-        let codeText = `Удача ${luck} + Быт ${lifeNumber}`;
+    if (luck.length > 0 && luck.length < 4 && mainDescriptionNumbers.lifeNumber > 2 && mainDescriptionNumbers.lifeNumber < 6) {
+        let codeText = `Удача ${luck} + Быт ${mainDescriptionNumbers.lifeNumber}`;
         paster(codeText, combinations[30]["7/77/777+lifeNumber3/4/5"]);
     }
-    if (luck.length > 0 && luck.length < 4 && lifeNumber > 1 && lifeNumber < 5 && memory.length == 5) {
-        let codeText = `Удача ${luck} + Быт ${lifeNumber} + Память ${memory}`;
+    if (luck.length > 0 && luck.length < 4 && mainDescriptionNumbers.lifeNumber > 1 && mainDescriptionNumbers.lifeNumber < 5 && memory.length == 5) {
+        let codeText = `Удача ${luck} + Быт ${mainDescriptionNumbers.lifeNumber} + Память ${memory}`;
         paster(codeText, combinations[30]["7/77/777+lifeNumber2/3/4+99999"]);
     }
-    if (luck.length > 0 && luck.length < 4 && lifeNumber > 0 && lifeNumber < 3 && logic.length > 0 && logic.length < 4) {
-        let codeText = `Удача ${luck} + Быт ${lifeNumber} + Логика ${logic}`;
+    if (luck.length > 0 && luck.length < 4 && mainDescriptionNumbers.lifeNumber > 0 && mainDescriptionNumbers.lifeNumber < 3 && logic.length > 0 && logic.length < 4) {
+        let codeText = `Удача ${luck} + Быт ${mainDescriptionNumbers.lifeNumber} + Логика ${logic}`;
         paster(codeText, combinations[30]["7/77/777+lifeNumber1/2+5/55/555"]);
     }
     ///
@@ -447,32 +492,32 @@ export const conditions = function () {
         let codeText = `Удача ${luck} + Долг ${duty} + Логика ${logic}`;
         paster(codeText, combinations[31]["7/77/777+5/55/555+8/0"]);
     }
-    if (luck.length > 0 && luck.length < 4 && familyNumber < 4) {
-        let codeText = `Удача ${luck} + Семья ${familyNumber}`;
+    if (luck.length > 0 && luck.length < 4 && mainDescriptionNumbers.familyNumber < 4) {
+        let codeText = `Удача ${luck} + Семья ${mainDescriptionNumbers.familyNumber}`;
         paster(codeText, combinations[32]["7/77/777+familyNumber1/2/3/0"]);
     }
     ///
-    if (luck.length > 0 && luck.length < 4 && temperament > 0 && temperament < 7) {
-        let codeText = `Удача ${luck} + Темперамент ${temperament}`;
+    if (luck.length > 0 && luck.length < 4 && mainDescriptionNumbers.temperament > 0 && mainDescriptionNumbers.temperament < 7) {
+        let codeText = `Удача ${luck} + Темперамент ${mainDescriptionNumbers.temperament}`;
         paster(codeText, combinations[33]["7/77/777+temperament1/2/3/4/5/6"]);
     }
     ///
-    if (luck.length > 0 && luck.length < 4 && (sumFromSumResult == 3 || sumFromSumResult == 7 || sumFromSumResult == 9)) {
-        let codeText = `Удача ${luck} + Число судьбы ${sumFromSumResult}`;
+    if (luck.length > 0 && luck.length < 4 && (data.sumFromSumResult == 3 || data.sumFromSumResult == 7 || data.sumFromSumResult == 9)) {
+        let codeText = `Удача ${luck} + Число судьбы ${data.sumFromSumResult}`;
         paster(codeText, combinations[34]["7/77/777+fateNumber7/9/3"]);
     }
     if (
         luck.length > 0 &&
         luck.length < 4 &&
-        lifeNumber > 0 &&
-        lifeNumber < 4 &&
-        familyNumber < 3 &&
-        familyNumber > 4 &&
-        temperament < 2 &&
-        temperament > 4 &&
-        (sumFromSumResult == 5 || sumFromSumResult == 7 || sumFromSumResult == 9)
+        mainDescriptionNumbers.lifeNumber > 0 &&
+        mainDescriptionNumbers.lifeNumber < 4 &&
+        mainDescriptionNumbers.familyNumber < 3 &&
+        mainDescriptionNumbers.familyNumber > 4 &&
+        mainDescriptionNumbers.temperament < 2 &&
+        mainDescriptionNumbers.temperament > 4 &&
+        (data.sumFromSumResult == 5 || data.sumFromSumResult == 7 || data.sumFromSumResult == 9)
     ) {
-        let codeText = `Удача ${luck} + Быт ${lifeNumber} + Семья ${familyNumber} + Темперамент ${temperament} + Число судьбы ${sumFromSumResult}`;
+        let codeText = `Удача ${luck} + Быт ${mainDescriptionNumbers.lifeNumber} + Семья ${mainDescriptionNumbers.familyNumber} + Темперамент ${mainDescriptionNumbers.temperament} + Число судьбы ${data.sumFromSumResult}`;
         paster(codeText, combinations[34]["7/77/777+lifeNumber1/2/3+familyNumber1/2/0/5/6/7/8/9+temperament1/0/5/6/7+fateNumber9/7/5"]);
     }
     ///
@@ -493,42 +538,42 @@ export const conditions = function () {
         let codeText = `Долг ${duty} + Энергия ${energy}`;
         paster(codeText, combinations[36]["8/0+22/222/2222"]);
     }
-    if (duty.length < 2 && energy.length < 2 && familyNumber < 3) {
-        let codeText = `Долг ${duty} + Энергия ${energy} + Семья ${familyNumber}`;
+    if (duty.length < 2 && energy.length < 2 && mainDescriptionNumbers.familyNumber < 3) {
+        let codeText = `Долг ${duty} + Энергия ${energy} + Семья ${mainDescriptionNumbers.familyNumber}`;
         paster(codeText, combinations[36]["8/0+2/0+familyNumber1/2/0"]);
     }
-    if (duty.length > 1 && duty.length < 4 && energy.length > 1 && energy.length < 5 && familyNumber > 3 && familyNumber < 7) {
-        let codeText = `Долг ${duty} + Энергия ${energy} + Семья ${familyNumber}`;
+    if (duty.length > 1 && duty.length < 4 && energy.length > 1 && energy.length < 5 && mainDescriptionNumbers.familyNumber > 3 && mainDescriptionNumbers.familyNumber < 7) {
+        let codeText = `Долг ${duty} + Энергия ${energy} + Семья ${mainDescriptionNumbers.familyNumber}`;
         paster(codeText, combinations[36]["88/888+22/222/2222+6/66+familyNumber4/5/6"]);
     }
     ///
-    if (duty.length == 1 && familyNumber < 3) {
-        let codeText = `Долг ${duty} + Семья ${familyNumber}`;
+    if (duty.length == 1 && mainDescriptionNumbers.familyNumber < 3) {
+        let codeText = `Долг ${duty} + Семья ${mainDescriptionNumbers.familyNumber}`;
         paster(codeText, combinations[37]["8+familyNumber1/2/0"]);
     }
-    if (duty.length == 1 && familyNumber > 3 && familyNumber < 7) {
-        let codeText = `Долг ${duty} + Семья ${familyNumber}`;
+    if (duty.length == 1 && mainDescriptionNumbers.familyNumber > 3 && mainDescriptionNumbers.familyNumber < 7) {
+        let codeText = `Долг ${duty} + Семья ${mainDescriptionNumbers.familyNumber}`;
         paster(codeText, combinations[37]["8+familyNumber4/5/6"]);
     }
-    if (duty.length > 1 && duty.length < 4 && familyNumber == 3) {
-        let codeText = `Долг ${duty} + Семья ${familyNumber}`;
+    if (duty.length > 1 && duty.length < 4 && mainDescriptionNumbers.familyNumber == 3) {
+        let codeText = `Долг ${duty} + Семья ${mainDescriptionNumbers.familyNumber}`;
         paster(codeText, combinations[37]["88/888+familyNumber3"]);
     }
-    if (duty.length > 1 && duty.length < 4 && familyNumber == 4) {
-        let codeText = `Долг ${duty} + Семья ${familyNumber}`;
+    if (duty.length > 1 && duty.length < 4 && mainDescriptionNumbers.familyNumber == 4) {
+        let codeText = `Долг ${duty} + Семья ${mainDescriptionNumbers.familyNumber}`;
         paster(codeText, combinations[37]["88/888+familyNumber4"]);
     }
     ///
-    if (duty.length < 2 && interest.length < 2 && logic.length > 0 && logic.length < 3 && lifeNumber > 2 && lifeNumber < 7) {
-        let codeText = `Долг ${duty} + Логика ${logic} + Интерес ${interest} + Быт ${lifeNumber}`;
+    if (duty.length < 2 && interest.length < 2 && logic.length > 0 && logic.length < 3 && mainDescriptionNumbers.lifeNumber > 2 && mainDescriptionNumbers.lifeNumber < 7) {
+        let codeText = `Долг ${duty} + Логика ${logic} + Интерес ${interest} + Быт ${mainDescriptionNumbers.lifeNumber}`;
         paster(codeText, combinations[38]["8/0+3/0+lifeNumber3/4/5/6+5/55"]);
     }
-    if (duty.length > 1 && duty.length < 4 && lifeNumber < 3) {
-        let codeText = `Долг ${duty} + Быт ${lifeNumber}`;
+    if (duty.length > 1 && duty.length < 4 && mainDescriptionNumbers.lifeNumber < 3) {
+        let codeText = `Долг ${duty} + Быт ${mainDescriptionNumbers.lifeNumber}`;
         paster(codeText, combinations[38]["88/888+lifeNumber1/2/0"]);
     }
-    if (duty.length > 1 && duty.length < 4 && lifeNumber > 2 && lifeNumber < 6) {
-        let codeText = `Долг ${duty} + Быт ${lifeNumber}`;
+    if (duty.length > 1 && duty.length < 4 && mainDescriptionNumbers.lifeNumber > 2 && mainDescriptionNumbers.lifeNumber < 6) {
+        let codeText = `Долг ${duty} + Быт ${mainDescriptionNumbers.lifeNumber}`;
         paster(codeText, combinations[38]["88/888+lifeNumber3/4/5"]);
     }
     ///
@@ -575,8 +620,8 @@ export const conditions = function () {
         let codeText = `Энергия ${energy} + Память ${memory} + Логика ${logic}`;
         paster(codeText, combinations[42]["22/222/2222+9/0+logic0"]);
     }
-    if (memory.length < 2 && temperament < 3) {
-        let codeText = `Память ${memory} + Темперамент ${temperament}`;
+    if (memory.length < 2 && mainDescriptionNumbers.temperament < 3) {
+        let codeText = `Память ${memory} + Темперамент ${mainDescriptionNumbers.temperament}`;
         paster(codeText, combinations[42]["9/0+temperament1/2/0"]);
     }
     ///
@@ -616,97 +661,97 @@ export const conditions = function () {
         paster(codeText, combinations[46]["99/999+5/55+8/88/888"]);
     }
     ///
-    if (temperament < 3 && interest.length < 2) {
-        let codeText = `Темперамент ${temperament} + Интерес ${interest}`;
+    if (mainDescriptionNumbers.temperament < 3 && interest.length < 2) {
+        let codeText = `Темперамент ${mainDescriptionNumbers.temperament} + Интерес ${interest}`;
         paster(codeText, combinations[47]["temperament1/2/0+3/0"]);
     }
-    if (temperament < 3 && familyNumber > 0 && familyNumber < 4) {
-        let codeText = `Темперамент ${temperament} + Семья ${familyNumber}`;
+    if (mainDescriptionNumbers.temperament < 3 && mainDescriptionNumbers.familyNumber > 0 && mainDescriptionNumbers.familyNumber < 4) {
+        let codeText = `Темперамент ${mainDescriptionNumbers.temperament} + Семья ${mainDescriptionNumbers.familyNumber}`;
         paster(codeText, combinations[47]["temperament1/2/0+familyNumber1/2/3"]);
     }
-    if (temperament < 3 && energy.length > 1 && energy.length < 5) {
-        let codeText = `Темперамент ${temperament} + Энергия ${energy}`;
+    if (mainDescriptionNumbers.temperament < 3 && energy.length > 1 && energy.length < 5) {
+        let codeText = `Темперамент ${mainDescriptionNumbers.temperament} + Энергия ${energy}`;
         paster(codeText, combinations[47]["temperament1/2/0+22/222/2222"]);
     }
-    if (temperament > 2 && temperament < 9 && familyNumber < 3) {
-        let codeText = `Темперамент ${temperament} + Семья ${familyNumber}`;
+    if (mainDescriptionNumbers.temperament > 2 && mainDescriptionNumbers.temperament < 9 && mainDescriptionNumbers.familyNumber < 3) {
+        let codeText = `Темперамент ${mainDescriptionNumbers.temperament} + Семья ${mainDescriptionNumbers.familyNumber}`;
         paster(codeText, combinations[47]["temperament3/4/5/6/7/8+familyNumber1/2/0"]);
     }
-    if (temperament > 3 && temperament < 9 && logic.length > 1 && logic.length < 5 && luck.length > 0 && luck.length) {
-        let codeText = `Темперамент ${temperament} + Логика ${logic} + Удача ${luck}`;
+    if (mainDescriptionNumbers.temperament > 3 && mainDescriptionNumbers.temperament < 9 && logic.length > 1 && logic.length < 5 && luck.length > 0 && luck.length) {
+        let codeText = `Темперамент ${mainDescriptionNumbers.temperament} + Логика ${logic} + Удача ${luck}`;
         paster(codeText, combinations[47]["temperament4/5/6/7/8+55/555/5555+7/77/777"]);
     }
     ///
-    if (lifeNumber < 3 && duty.length > 1 && duty.length < 4) {
-        let codeText = `Быт ${lifeNumber} + Долг ${duty}`;
+    if (mainDescriptionNumbers.lifeNumber < 3 && duty.length > 1 && duty.length < 4) {
+        let codeText = `Быт ${mainDescriptionNumbers.lifeNumber} + Долг ${duty}`;
         paster(codeText, combinations[48]["lifeNumber1/2/0+88/888"]);
     }
-    if (lifeNumber > 1 && duty.length > 1 && duty.length < 4) {
-        let codeText = `Быт ${lifeNumber} + Долг ${duty}`;
+    if (mainDescriptionNumbers.lifeNumber > 1 && duty.length > 1 && duty.length < 4) {
+        let codeText = `Быт ${mainDescriptionNumbers.lifeNumber} + Долг ${duty}`;
         paster(codeText, combinations[48]["lifeNumber2/3/4/5+88/888"]);
     }
-    if (lifeNumber > 2 && lifeNumber < 5 && logic.length > 1 && logic.length < 4) {
-        let codeText = `Быт ${lifeNumber} + Логика ${logic}`;
+    if (mainDescriptionNumbers.lifeNumber > 2 && mainDescriptionNumbers.lifeNumber < 5 && logic.length > 1 && logic.length < 4) {
+        let codeText = `Быт ${mainDescriptionNumbers.lifeNumber} + Логика ${logic}`;
         paster(codeText, combinations[48]["lifeNumber3/4/5+55/555"]);
     }
     ///
-    if (sumFromSumResult == 1 && character.length > 3 && character.length < 7) {
-        let codeText = `Число судьбы ${sumFromSumResult} + Характер ${character}`;
+    if (data.sumFromSumResult == 1 && character.length > 3 && character.length < 7) {
+        let codeText = `Число судьбы ${data.sumFromSumResult} + Характер ${character}`;
         paster(codeText, combinations[49]["fateNumber1+1111/11111/111111"]);
     }
-    if (sumFromSumResult == 1 && energy.length > 1 && energy.length < 5 && work.length > 0 && work.length < 3 && duty.length > 1 && duty.length < 4) {
-        let codeText = `Число судьбы ${sumFromSumResult} + Энергия ${energy} + Труд ${work} + Долг ${duty}`;
+    if (data.sumFromSumResult == 1 && energy.length > 1 && energy.length < 5 && work.length > 0 && work.length < 3 && duty.length > 1 && duty.length < 4) {
+        let codeText = `Число судьбы ${data.sumFromSumResult} + Энергия ${energy} + Труд ${work} + Долг ${duty}`;
         paster(codeText, combinations[49]["fateNumber1+22/222/2222+6/66+88/888"]);
     }
-    if (sumFromSumResult > 1 && sumFromSumResult < 4 && luck.length > 0 && luck.length < 3 && logic.length > 0 && logic.length < 3) {
-        let codeText = `Число судьбы ${sumFromSumResult} + Удача ${luck} + Логика ${logic}`;
+    if (data.sumFromSumResult > 1 && data.sumFromSumResult < 4 && luck.length > 0 && luck.length < 3 && logic.length > 0 && logic.length < 3) {
+        let codeText = `Число судьбы ${data.sumFromSumResult} + Удача ${luck} + Логика ${logic}`;
         paster(codeText, combinations[49]["fateNumber2/3+7/77+5/55"]);
     }
-    if (sumFromSumResult == 4 && energy.length > 1 && energy.length < 5 && work.length > 0 && work.length < 3) {
-        let codeText = `Число судьбы ${sumFromSumResult} + Энергия ${energy} + Труд ${work}`;
+    if (data.sumFromSumResult == 4 && energy.length > 1 && energy.length < 5 && work.length > 0 && work.length < 3) {
+        let codeText = `Число судьбы ${data.sumFromSumResult} + Энергия ${energy} + Труд ${work}`;
         paster(codeText, combinations[49]["fateNumber4+22/222/2222+6/66"]);
     }
-    if (sumFromSumResult == 4 && health.length > 0 && health.length < 4 && work.length > 0 && work.length < 4) {
-        let codeText = `Число судьбы ${sumFromSumResult} + Здоровье ${health} + Труд ${work}`;
+    if (data.sumFromSumResult == 4 && health.length > 0 && health.length < 4 && work.length > 0 && work.length < 4) {
+        let codeText = `Число судьбы ${data.sumFromSumResult} + Здоровье ${health} + Труд ${work}`;
         paster(codeText, combinations[49]["fateNumber4+4/44/444+6/66/666"]);
     }
-    if (sumFromSumResult == 5 && energy.length == 3 && logic.length > 0 && logic.length < 4) {
-        let codeText = `Число судьбы ${sumFromSumResult} + Энергия ${energy} + Логика ${logic}`;
+    if (data.sumFromSumResult == 5 && energy.length == 3 && logic.length > 0 && logic.length < 4) {
+        let codeText = `Число судьбы ${data.sumFromSumResult} + Энергия ${energy} + Логика ${logic}`;
         paster(codeText, combinations[49]["fateNumber5+222+5/55/555"]);
     }
-    if (sumFromSumResult == 5 && interest.length < 2) {
-        let codeText = `Число судьбы ${sumFromSumResult} + Интерес ${interest}`;
+    if (data.sumFromSumResult == 5 && interest.length < 2) {
+        let codeText = `Число судьбы ${data.sumFromSumResult} + Интерес ${interest}`;
         paster(codeText, combinations[49]["fateNumber5+3/0"]);
     }
-    if (sumFromSumResult == 6 && interest.length < 2) {
-        let codeText = `Число судьбы ${sumFromSumResult} + Интерес ${interest}`;
+    if (data.sumFromSumResult == 6 && interest.length < 2) {
+        let codeText = `Число судьбы ${data.sumFromSumResult} + Интерес ${interest}`;
         paster(codeText, combinations[49]["fateNumber6+3/0"]);
     }
-    if (sumFromSumResult == 7 && luck.length > 0 && luck.length < 4 && work.length > 0 && work.length < 4) {
-        let codeText = `Число судьбы ${sumFromSumResult} + Удача ${luck} + Труд ${work}`;
+    if (data.sumFromSumResult == 7 && luck.length > 0 && luck.length < 4 && work.length > 0 && work.length < 4) {
+        let codeText = `Число судьбы ${data.sumFromSumResult} + Удача ${luck} + Труд ${work}`;
         paster(codeText, combinations[49]["fateNumber7+7/77/777+6/66/666"]);
     }
-    if (sumFromSumResult == 8 && lifeNumber > 2 && lifeNumber < 6 && work.length > 0 && work.length < 4) {
-        let codeText = `Число судьбы ${sumFromSumResult} + Быт ${lifeNumber} + Труд ${work}`;
+    if (data.sumFromSumResult == 8 && mainDescriptionNumbers.lifeNumber > 2 && mainDescriptionNumbers.lifeNumber < 6 && work.length > 0 && work.length < 4) {
+        let codeText = `Число судьбы ${data.sumFromSumResult} + Быт ${mainDescriptionNumbers.lifeNumber} + Труд ${work}`;
         paster(codeText, combinations[49]["fateNumber8+lifeNumber3/4/5+6/66/666"]);
     }
-    if (sumFromSumResult == 9 && familyNumber > 4 && familyNumber < 8 && logic.length > 1 && logic.length < 4) {
-        let codeText = `Число судьбы ${sumFromSumResult} + Семья ${familyNumber} + Логика ${logic}`;
+    if (data.sumFromSumResult == 9 && mainDescriptionNumbers.familyNumber > 4 && mainDescriptionNumbers.familyNumber < 8 && logic.length > 1 && logic.length < 4) {
+        let codeText = `Число судьбы ${data.sumFromSumResult} + Семья ${mainDescriptionNumbers.familyNumber} + Логика ${logic}`;
         paster(codeText, combinations[49]["fateNumber9+familyNumber5/6/7+55/555"]);
     }
     if (
-        sumFromSumResult == 9 &&
+        data.sumFromSumResult == 9 &&
         luck.length > 0 &&
         luck.length < 4 &&
-        lifeNumber < 3 &&
-        familyNumber > 0 &&
-        familyNumber < 4 &&
-        familyNumber > 5 &&
-        familyNumber < 8 &&
-        temperament > 4 &&
-        temperament < 8
+        mainDescriptionNumbers.lifeNumber < 3 &&
+        mainDescriptionNumbers.familyNumber > 0 &&
+        mainDescriptionNumbers.familyNumber < 4 &&
+        mainDescriptionNumbers.familyNumber > 5 &&
+        mainDescriptionNumbers.familyNumber < 8 &&
+        mainDescriptionNumbers.temperament > 4 &&
+        mainDescriptionNumbers.temperament < 8
     ) {
-        let codeText = `Число судьбы ${sumFromSumResult} + Удача ${luck} + Быт ${lifeNumber} + Семья ${familyNumber} + Темперамент ${temperament}`;
+        let codeText = `Число судьбы ${data.sumFromSumResult} + Удача ${luck} + Быт ${mainDescriptionNumbers.lifeNumber} + Семья ${mainDescriptionNumbers.familyNumber} + Темперамент ${mainDescriptionNumbers.temperament}`;
         paster(codeText, combinations[49]["fateNumber9+7/77/777+lifeNumber1/2/0+familyNumber1/2/3/6/7+temperament5/6/7"]);
     }
     ///
@@ -727,19 +772,19 @@ export const conditions = function () {
         paster(codeText, combinations[50]["55/555/5555"]);
     }
     ///
-    if (luck.length > 0 && luck.length < 4 && lifeNumber < 3 && interest.length > 1 && interest.length < 4) {
-        let codeText = `Удача ${luck} + Быт ${lifeNumber}  + Интерес ${interest}`;
+    if (luck.length > 0 && luck.length < 4 && mainDescriptionNumbers.lifeNumber < 3 && interest.length > 1 && interest.length < 4) {
+        let codeText = `Удача ${luck} + Быт ${mainDescriptionNumbers.lifeNumber}  + Интерес ${interest}`;
         paster(codeText, combinations[51]["7/77/777+lifeNumber1/2/0+33/333"]);
     }
-    if (luck.length > 0 && luck.length < 4 && lifeNumber < 3 && interest.length > 1 && interest.length < 4 && familyNumber < 3) {
-        let codeText = `Удача ${luck} + Быт ${lifeNumber}  + Интерес ${interest} + Семья ${familyNumber}`;
+    if (luck.length > 0 && luck.length < 4 && mainDescriptionNumbers.lifeNumber < 3 && interest.length > 1 && interest.length < 4 && mainDescriptionNumbers.familyNumber < 3) {
+        let codeText = `Удача ${luck} + Быт ${mainDescriptionNumbers.lifeNumber}  + Интерес ${interest} + Семья ${mainDescriptionNumbers.familyNumber}`;
         paster(codeText, combinations[51]["7/77/777+lifeNumber1/2/0+33/333+familyNumber1/2/0"]);
     }
     ///вывод кода альфа-самки
     const alphaFemaleCode = document.querySelector(".alpha-female__code");
-    if (temperament > 2 && temperament < 8) {
+    if (mainDescriptionNumbers.temperament > 2 && mainDescriptionNumbers.temperament < 8) {
         alphaFemaleCode.classList.add("show");
-        let codeText = `Темперамент ${temperament}`;
+        let codeText = `Темперамент ${mainDescriptionNumbers.temperament}`;
         alphaFemaleCode.append(createParagraph(codeText), createDescription(combinations["alphaFemaleCode"]["temperament3/4/5/6/7"]));
     }
     if (interest.length > 1 && interest.length < 5) {
@@ -747,17 +792,17 @@ export const conditions = function () {
         let codeText = `Интерес ${interest}`;
         alphaFemaleCode.append(createParagraph(codeText), createDescription(combinations["alphaFemaleCode"]["33/333/3333"]));
     }
-    if (interest.length > 1 && interest.length < 5 && logic.length < 2 && memory.length > 1 && memory.length < 4 && temperament > 2 && temperament < 8) {
+    if (interest.length > 1 && interest.length < 5 && logic.length < 2 && memory.length > 1 && memory.length < 4 && mainDescriptionNumbers.temperament > 2 && mainDescriptionNumbers.temperament < 8) {
         alphaFemaleCode.classList.add("show");
-        let codeText = `Темперамент ${temperament} + Интерес ${interest} + Логика ${logic} + Память ${memory}`;
+        let codeText = `Темперамент ${mainDescriptionNumbers.temperament} + Интерес ${interest} + Логика ${logic} + Память ${memory}`;
         alphaFemaleCode.append(createParagraph(codeText), createDescription(combinations["alphaFemaleCode"]["33/333/3333+5/0+99/999+temperament3/4/5/6/7"]));
     }
     ///вывод кода бета-самки
     const betaFemaleCode = document.querySelector(".beta-female__code");
-    if (character.length > 3 && character.length < 8 && duty.length > 1 && duty.length < 4 && temperament < 3) {
+    if (character.length > 3 && character.length < 8 && duty.length > 1 && duty.length < 4 && mainDescriptionNumbers.temperament < 3) {
         betaFemaleCode.classList.add("show");
 
-        let codeText = `Характер ${character} + Долг ${duty} + Темперамент ${temperament}`;
+        let codeText = `Характер ${character} + Долг ${duty} + Темперамент ${mainDescriptionNumbers.temperament}`;
         betaFemaleCode.append(createParagraph(codeText), createDescription(combinations["betaFemaleCode"]["1111/11111/111111/1111111+88/888+temperament1/2/0"]));
 
         const personalTouch = Object.values(combinations["betaFemaleCode"]["personalTouch"]);
@@ -786,10 +831,10 @@ export const conditions = function () {
         let codeText = `Интерес ${interest}`;
         alphaMaleCode.append(createParagraph(codeText), createDescription(combinations["alphaMale"]["33/333"]));
     }
-    if (lifeNumber > 2 && lifeNumber < 5) {
+    if (mainDescriptionNumbers.lifeNumber > 2 && mainDescriptionNumbers.lifeNumber < 5) {
         alphaMaleCode.classList.add("show");
 
-        let codeText = `Быт ${lifeNumber}`;
+        let codeText = `Быт ${mainDescriptionNumbers.lifeNumber}`;
         alphaMaleCode.append(createParagraph(codeText), createDescription(combinations["alphaMale"]["lifeNumber3/4"]));
     }
     if (character.length > 2 && character.length < 7) {
@@ -801,10 +846,11 @@ export const conditions = function () {
     /// код миллионера
 
     const millionaireCode = document.querySelector(".millionaire__code");
-    if (lifeNumber > 2 && lifeNumber < 6 && work.length > 0 && work.length < 3 && duty.length < 2 && health.length > 0 && health.length < 3) {
+
+    if (mainDescriptionNumbers.lifeNumber > 2 && mainDescriptionNumbers.lifeNumber < 6 && work.length > 0 && work.length < 3 && duty.length < 2 && health.length > 0 && health.length < 3) {
         millionaireCode.classList.add("show");
 
-        let codeText = `Быт ${lifeNumber} + Труд ${work} + Долг ${duty} + Здоровье ${health}`;
+        let codeText = `Быт ${mainDescriptionNumbers.lifeNumber} + Труд ${work} + Долг ${duty} + Здоровье ${health}`;
         millionaireCode.append(createParagraph(codeText), createDescription(combinations["millionaireCode"]["lifeNumber3/4/5+6/66+8/0+4/44"]));
 
         const mistakes = Object.values(combinations["millionaireCode"]["mistakes"]);
@@ -814,35 +860,35 @@ export const conditions = function () {
 
     /// код маминого сынка
     const motherSon = document.querySelector(".mother-son__code");
-    if (duty.length > 3 && duty.length < 6 && familyNumber > 5 && familyNumber < 10) {
+    if (duty.length > 3 && duty.length < 6 && mainDescriptionNumbers.familyNumber > 5 && mainDescriptionNumbers.familyNumber < 10) {
         motherSon.classList.add("show");
 
-        let codeText = `Семья ${familyNumber} + Долг ${duty}`;
+        let codeText = `Семья ${mainDescriptionNumbers.familyNumber} + Долг ${duty}`;
         motherSon.append(createParagraph(codeText), createDescription(combinations["mothersSon"]["8888/88888+familyNumber6/7/8/9"]));
     }
-    if (duty.length < 2 && character.length > 0 && character.length < 3 && familyNumber < 3 && lifeNumber < 2) {
+    if (duty.length < 2 && character.length > 0 && character.length < 3 && mainDescriptionNumbers.familyNumber < 3 && mainDescriptionNumbers.lifeNumber < 2) {
         motherSon.classList.add("show");
 
-        let codeText = `Семья ${familyNumber} + Долг ${duty} + Характер ${character} + Быт ${lifeNumber}`;
+        let codeText = `Семья ${mainDescriptionNumbers.familyNumber} + Долг ${duty} + Характер ${character} + Быт ${mainDescriptionNumbers.lifeNumber}`;
         motherSon.append(createParagraph(codeText), createDescription(combinations["mothersSon"]["8/0+1/11+familyNumber1/2/0+lifeNumber1/0"]));
     }
     ///  код жадины
     const meanie = document.querySelector(".meanie__code");
     meanie.append(createSubTitle(combinations["meanie"]["title"]));
 
-    if (logic.length > 0 && lifeNumber > 0 && lifeNumber < 7 && familyNumber > 3 && familyNumber < 8) {
+    if (logic.length > 0 && mainDescriptionNumbers.lifeNumber > 0 && mainDescriptionNumbers.lifeNumber < 7 && mainDescriptionNumbers.familyNumber > 3 && mainDescriptionNumbers.familyNumber < 8) {
         meanie.classList.add("show");
-        let codeText = `Логика ${logic} + Быт ${lifeNumber} + Семья ${familyNumber}`;
+        let codeText = `Логика ${logic} + Быт ${mainDescriptionNumbers.lifeNumber} + Семья ${mainDescriptionNumbers.familyNumber}`;
         meanie.append(createParagraph(codeText));
     }
-    if (interest.length < 2 && logic.length > 0 && logic.length < 3 && lifeNumber == 2) {
+    if (interest.length < 2 && logic.length > 0 && logic.length < 3 && mainDescriptionNumbers.lifeNumber == 2) {
         meanie.classList.add("show");
-        let codeText = `Логика ${logic} + Быт ${lifeNumber} + Интерес ${interest}`;
+        let codeText = `Логика ${logic} + Быт ${mainDescriptionNumbers.lifeNumber} + Интерес ${interest}`;
         meanie.append(createParagraph(codeText));
     }
-    if (interest.length < 2 && logic.length > 0 && logic.length < 3 && temperament < 3) {
+    if (interest.length < 2 && logic.length > 0 && logic.length < 3 && mainDescriptionNumbers.temperament < 3) {
         meanie.classList.add("show");
-        let codeText = `Логика ${logic} + Быт ${lifeNumber} + Темперамент ${temperament}`;
+        let codeText = `Логика ${logic} + Интерес ${interest} + Темперамент ${mainDescriptionNumbers.temperament}`;
         meanie.append(createParagraph(codeText));
     }
     meanie.append(createDescription(combinations["meanie"]["value"]));
@@ -851,14 +897,14 @@ export const conditions = function () {
     const gambler = document.querySelector(".gambler__code");
     gambler.append(createSubTitle(combinations["gambler"]["title"]));
 
-    if (interest.length > 1 && interest.length < 4 && lifeNumber < 3 && logic.length > 0 && logic.length < 3 && luck.length > 0 && luck.length < 4) {
+    if (interest.length > 1 && interest.length < 4 && mainDescriptionNumbers.lifeNumber < 3 && logic.length > 0 && logic.length < 3 && luck.length > 0 && luck.length < 4) {
         gambler.classList.add("show");
-        let codeText = `Интерес ${interest} + Быт ${lifeNumber} + Логика ${logic} + Удача ${luck}`;
+        let codeText = `Интерес ${interest} + Быт ${mainDescriptionNumbers.lifeNumber} + Логика ${logic} + Удача ${luck}`;
         gambler.append(createParagraph(codeText));
     }
-    if (luck.length > 0 && luck.length < 4 && lifeNumber > 2 && lifeNumber < 6) {
+    if (luck.length > 0 && luck.length < 4 && mainDescriptionNumbers.lifeNumber > 2 && mainDescriptionNumbers.lifeNumber < 6) {
         gambler.classList.add("show");
-        let codeText = `Быт ${lifeNumber} + Удача ${luck}`;
+        let codeText = `Быт ${mainDescriptionNumbers.lifeNumber} + Удача ${luck}`;
         gambler.append(createParagraph(codeText));
     }
     gambler.append(createDescription(combinations["gambler"]["value"]));
@@ -867,9 +913,9 @@ export const conditions = function () {
     const nerd = document.querySelector(".nerd__code");
     nerd.append(createSubTitle(combinations["nerd"]["title"]));
 
-    if (duty.length > 1 && duty.length < 4 && energy.length > 2 && familyNumber > 4 && familyNumber < 9 && work.length > 0 && work.length < 4) {
+    if (duty.length > 1 && duty.length < 4 && energy.length > 2 && mainDescriptionNumbers.familyNumber > 4 && mainDescriptionNumbers.familyNumber < 9 && work.length > 0 && work.length < 4) {
         nerd.classList.add("show");
-        let codeText = `Долг ${duty} + Семья ${familyNumber} + Энергия ${energy} + Труд ${work}`;
+        let codeText = `Долг ${duty} + Семья ${mainDescriptionNumbers.familyNumber} + Энергия ${energy} + Труд ${work}`;
         nerd.append(createParagraph(codeText));
     }
     if (energy.length > 1 && interest.length < 2 && logic.length > 0 && logic.length < 4) {
@@ -883,10 +929,10 @@ export const conditions = function () {
     const gigolo = document.querySelector(".gigolo__code");
     gigolo.append(createSubTitle(combinations["gigolo"]["title"]));
 
-    if (lifeNumber < 3 && duty.length < 2) {
+    if (mainDescriptionNumbers.lifeNumber < 3 && duty.length < 2) {
         gigolo.classList.add("show");
 
-        let codeText = `Быт ${lifeNumber} + Долг ${duty}`;
+        let codeText = `Быт ${mainDescriptionNumbers.lifeNumber} + Долг ${duty}`;
         gigolo.append(createParagraph(codeText), createDescription(combinations["gigolo"]["codes"]["lifeNumber1/2/0+8/0"]));
     }
     if (luck.length > 0 && luck.length < 4 && logic.length > 0 && logic.length < 4) {
@@ -895,10 +941,10 @@ export const conditions = function () {
         let codeText = `Удача ${luck} + Логика ${logic}`;
         gigolo.append(createParagraph(codeText), createDescription(combinations["gigolo"]["codes"]["7/77/777+5/55/555"]));
     }
-    if (luck.length > 0 && luck.length < 4 && work.length > 0 && work.length < 4 && temperament > 3 && temperament < 7) {
+    if (luck.length > 0 && luck.length < 4 && work.length > 0 && work.length < 4 && mainDescriptionNumbers.temperament > 3 && mainDescriptionNumbers.temperament < 7) {
         gigolo.classList.add("show");
 
-        let codeText = `Удача ${luck} + Труд ${work} + Темперамент ${temperament}`;
+        let codeText = `Удача ${luck} + Труд ${work} + Темперамент ${mainDescriptionNumbers.temperament}`;
         gigolo.append(createParagraph(codeText), createDescription(combinations["gigolo"]["codes"]["temperament4/5/6+7/77/777+6/66/666"]));
     }
 
@@ -906,16 +952,16 @@ export const conditions = function () {
     const tyrant = document.querySelector(".tyrant__code");
     tyrant.append(createSubTitle(combinations["homeTyrant"]["title"]));
 
-    if (health.length > 1 && health.length < 5 && memory.length > 1 && memory.length < 5 && temperament < 3) {
+    if (health.length > 1 && health.length < 5 && memory.length > 1 && memory.length < 5 && mainDescriptionNumbers.temperament < 3) {
         tyrant.classList.add("show");
 
-        let codeText = `Здоровье ${health} + Память ${memory} + Темперамент ${temperament}`;
+        let codeText = `Здоровье ${health} + Память ${memory} + Темперамент ${mainDescriptionNumbers.temperament}`;
         tyrant.append(createParagraph(codeText), createDescription(combinations["homeTyrant"]["44/444/4444+99/999/9999+temperament1/2/0"]));
     }
-    if (familyNumber > 5 && familyNumber < 10 && logic.length > 1 && logic.length < 5) {
+    if (mainDescriptionNumbers.familyNumber > 5 && mainDescriptionNumbers.familyNumber < 10 && logic.length > 1 && logic.length < 5) {
         tyrant.classList.add("show");
 
-        let codeText = `Семья ${familyNumber} + Логика ${logic}`;
+        let codeText = `Семья ${mainDescriptionNumbers.familyNumber} + Логика ${logic}`;
         tyrant.append(createParagraph(codeText), createDescription(combinations["homeTyrant"]["familyNumber6/7/8/9+55/555/5555"]));
     }
 
