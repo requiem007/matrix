@@ -1,5 +1,5 @@
 import { mainDescriptionNumbers, data } from "./data.js";
-import { desc, bodyDiv, matrixDescription, fullMatrixDescription, container, numberBox, fullArray } from "../app.js";
+import { desc, bodyDiv, matrixDescription, fullMatrixDescription, container, numberBox, fullArray, popup, body, timeout, unlock } from "../app.js";
 import { fate } from "./service.js";
 
 export const accordeon = () => {
@@ -436,4 +436,9 @@ export const replaceZeroValues = () => {
             ? document.getElementById(`${index + 1}`).insertAdjacentHTML("afterbegin", `<p class='output'>${number.join("")}</p>`)
             : document.getElementById(`${index + 1}`).insertAdjacentHTML("afterbegin", `<p class='output'>-</p>`);
     });
+};
+export const popupClose = () => {
+    popup.classList.remove("open");
+    body.classList.remove("lock");
+    body.style.paddingRight = "0px";
 };
